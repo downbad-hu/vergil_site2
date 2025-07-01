@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  background: #0d0d0d;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+}
+
+body.light-mode {
+  background: #f0f0f0;
+  color: #111;
+}
+
+.video-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(2px) brightness(0.5);
+}
+
+/* 👤 BY SATYAM Text */
+.bio-text {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+/* 🖼️ Slideshow */
+.slideshow {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.slideshow img {
+  width: 300px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #00bfff;
+  transition: opacity 0.5s ease;
+}
+
+/* 🔗 Social Icons */
+.social-links {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3;
+}
+
+.social-links img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00bfff;
+}
+
+/* 🎧 & 🌗 Buttons */
+#mute-btn,
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  z-index: 4;
+  cursor: pointer;
+}
+
+#mute-btn {
+  left: 15px;
+}
+
+#theme-toggle {
+  right: 15px;
+}
+
+#mute-btn img,
+#theme-toggle img {
+  width: 100%;
+  height: auto;
+}
+
+/* 🌌 Aura Background */
+#aura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ⚔️ Cursor Trail */
+#cursor-trail-container .cursor-trail {
+  width: 10px;
+  height: 10px;
+  background: #00bfff;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 0 5px #00bfff;
+}
+
+/* 🧠 Vergil Quotes */
+#vergil-quote {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  font-size: 1.2rem;
+  color: #00bfff;
+  text-shadow: 0 0 8px rgba(0, 191, 255, 0.5);
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 5;
+}

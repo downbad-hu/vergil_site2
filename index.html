@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE alpha and the omega VERGIL</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/vergil.jpg" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- 🎧 Mute Button -->
+  <button id="mute-btn">
+    <img id="volume-icon" src="assets/volume-on.png" alt="Mute Toggle" />
+  </button>
+
+  <!-- 🌗 Theme Toggle -->
+  <button id="theme-toggle">
+    <img id="theme-icon" src="assets/moon.png" alt="Theme Toggle" />
+  </button>
+
+  <!-- 🎥 Background Video -->
+  <div class="video-wrapper">
+    <video autoplay muted loop>
+      <source src="assets/vergil_cut.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- 👤 Bio Section -->
+  <div class="bio-text">
+    <h1 style="
+      font-family: 'Cinzel', serif;
+      color: #00bfff;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);">
+      вy sατyαм
+    </h1>
+  </div>
+
+  <!-- 🖼️ Slideshow -->
+  <div class="slideshow">
+    <img id="slide" src="assets/vergil.jpg" alt="Slideshow Image" />
+  </div>
+
+  <!-- 🔗 Social Icons -->
+  <div class="social-links">
+    <a href="https://www.instagram.com/danteeeee.fr" target="_blank"><img src="assets/instagram.jpg" alt="Instagram" /></a>
+    <a href="https://open.spotify.com/user/31vn5rxnwghnrcq3acu2tcqsn6wa?si=vyw0AlpuQlG-pcLt593XUw" target="_blank"><img src="assets/spotify.jpg" alt="Spotify" /></a>
+    <a href="https://youtube.com/@s4satyam1?si=PRZxauxLywGTSzVk" target="_blank"><img src="assets/youtube.jpg" alt="YouTube" /></a>
+    <a href="https://boxd.it/c5QOV" target="_blank"><img src="assets/letterboxd.jpg" alt="Letterboxd" /></a>
+  </div>
+
+  <!-- 🎧 Background Music -->
+  <audio id="bg-music" loop>
+    <source src="assets/bury_the_light.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- 🌌 Aura Canvas -->
+  <canvas id="aura-canvas"></canvas>
+
+  <!-- ⚔️ Cursor Trail -->
+  <div id="cursor-trail-container"></div>
+
+  <!-- 🧠 Quotes -->
+  <div id="vergil-quote"></div>
+
+  <!-- Scripts -->
+  <script src="trail.js"></script>
+  <script src="particles.js"></script>
+  <script src="quotes.js"></script>
+  <script>
+    const audio = document.getElementById("bg-music");
+    const muteBtn = document.getElementById("mute-btn");
+    const volumeIcon = document.getElementById("volume-icon");
+    const slide = document.getElementById("slide");
+
+    const slides = [
+      "assets/vergil.jpg",
+      "assets/dante.jpg",
+      "assets/game1.jpg"
+    ];
+    let currentIndex = 0;
+    let isMuted = false;
+
+    // Start audio on first interaction
+    window.addEventListener("click", () => {
+      if (audio.paused) audio.play().catch(e => console.warn("Autoplay blocked"));
+    });
+
+    muteBtn.addEventListener("click", () => {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      volumeIcon.src = isMuted ? "assets/volume-off.png" : "assets/volume-on.png";
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.contains("light-mode");
+      themeIcon.src = isLight ? "assets/sun.png" : "assets/moon.png";
+    });
+
+    // Slideshow
+    function changeSlide() {
+      if (slide) {
+        slide.src = slides[currentIndex];
+        currentIndex = (currentIndex + 1) % slides.length;
+      }
+    }
+    window.addEventListener("DOMContentLoaded", () => {
+      setInterval(changeSlide, 3000);
+    });
+  </script>
+</body>
+</html>
